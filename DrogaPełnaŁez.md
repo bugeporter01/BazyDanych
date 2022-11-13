@@ -1,7 +1,7 @@
-# zad12
+# zad01
 list od teściowej
 
-
+komendy skopowiane i wklejone 
 
 
 
