@@ -1,1 +1,64 @@
+#ZADANIE 1
+
+CREATE TABLE postac (id_postaci INT auto_increment PRIMARY KEY, nazwa VARCHAR(40), rodzaj ENUM('wiking', 'ptak', 'kobieta'), data_ur DATE, wiek INT UNSIGNED);
+
+INSERT INTO postac values(0, 'Bjorn', 'wiking', '2022-03-11', 24);
+INSERT INTO postac values(1, 'Drozd', 'ptak', '2021-05-11', 28);
+INSERT INTO postac values(3, 'Tesciowa', 'kobieta', '2008-02-21', 14);
+UPDATE postac SET wiek=88 WHERE nazwa = 'Tesciowa';
+
+SELECT * FROM postac;
+
+_____________________________________________________
+#ZADANIE 2
+
+CREATE TABLE walizka(id_walizki INT auto_increment PRIMARY KEY, pojemnosc INT UNSIGNED, kolor ENUM('rozowy', 'czerwony', 'teczowy', 'zolty'), id_wlasciciela INT, FOREIGN KEY(id_wlasciciela) REFERENCES postac(id_postaci) ON DELETE CASCADE);
+
+ALTER TABLE walizka ALTER kolor SET DEFAULT 'rozowy';
+
+INSERT INTO walizka values(0, 10, default, 1);
+
+select * from walizka;
+_______________________________________________________
+#ZADANIE 3
+
+CREATE TABLE izba(adres_budynku VARCHAR(50), nazwa_izby VARCHAR(50), metraz INT UNSIGNED, id_wlasciciela INT, FOREIGN KEY(id_wlasciciela) REFERENCES postac(id_postaci), PRIMARY KEY(adres_budynku, nazwa_izby));
+
+ALTER TABLE izba ADD COLUMN kolor_izby ENUM('zolty', 'czerwony', 'czarny') DEFAULT 'czarny' AFTER metraz;
+
+INSERT INTO izba VALUES ('Sloneczna 54', 'Spizarnia', 50, default, 2);
+
+SELECT * FROM izba;
+_______________________________________________________
+#ZADANIE 4
+
+CREATE TABLE przetwory (id_przetworu INT PRIMARY KEY, rok_produkcji INT DEFAULT '1654', id_wykonawcy INT, FOREIGN KEY(id_wykonawcy) REFERENCES postac(id_postaci), zawartosc VARCHAR(50), dodatek VARCHAR(50) DEFAULT 'papryczka chilli', id_konsumenta INT, FOREIGN KEY(id_konsumenta) REFERENCES postac(id_postaci);
+
+INSERT INTO przetwory VALUES (2, default, 1, 'Bigos', default, 3);
+
+_______________________________________________________
+#ZADANIE 5
+
+INSERT INTO postac VALUES(NULL, 'Magnus', 'wiking', '1994-03-25', 28, 'Szachista', 'Jacek');
+INSERT INTO postac VALUES(NULL, 'Ian', 'ptak', '1992-05-21', 30, 'Kajtek', 'Jacek');
+INSERT INTO postac VALUES(NULL, 'Hikaru', 'kobieta', '1990-04-12', 32, 'Memiarz', 'Jacek');
+INSERT INTO postac VALUES(NULL, 'Stjorn', 'wiking', '1994-03-25', 27, 'Pokładowy', 'Jacek');
+INSERT INTO postac VALUES(NULL, 'So', 'wiking', '1994-03-26', 28, 'Vice-Kapitan', 'Jacek');
+
+CREATE TABLE statek(nazwa_statku VARCHAR(15) PRIMARY KEY, rodzaj_statku ENUM('duzy', 'maly'), data_wodowania DATE, max_ladownosci INT UNSIGNED);
+
+INSERT INTO statek VALUES('Escapade', 'duzy', '1999-02-26', 10000);
+INSERT INTO statek VALUES('Rusher', 'maly', '2000-02-26', 5000);
+
+ALTER TABLE postac ADD COLUMN funkcja VARCHAR(20);
+
+UPDATE postac SET funkcja = 'Kapitan' WHERE nazwa = 'Bjorn';
+
+ALTER TABLE postac ADD COLUMN (nazwa_statku VARCHAR(15), FOREIGN KEY(nazwa_statku2) REFERENCES statek(nazwa_statku));
+
+UPDATE postac SET nazwa_statku = 'Escapade' WHERE nazwa = 'Bjorn';
+UPDATE postac SET nazwa_statku = 'Rusher' WHERE nazwa = 'Drozd';
+
+DELETE FROM izba WHERE nazwa_izby = 'Spizarnia';
+DROP TABLE izba;
 
