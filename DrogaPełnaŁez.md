@@ -292,3 +292,14 @@ mysql> ^Mmysql> ^C
     -> mysql> ^C
     -> mysql> ^C
     ->
+
+mysql> ALTER TABLE walizka
+    -> ;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> UPDATE walizka
+    -> SET id_wlasciciela=2
+    -> WHERE kolor = 'czerwony'
+    -> ;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
