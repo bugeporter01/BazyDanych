@@ -302,4 +302,4 @@ mysql> UPDATE walizka
     -> WHERE kolor = 'czerwony'
     -> ;
 Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
+Rows matched: 1  Changed: 1  Warnings: 0,
