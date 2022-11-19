@@ -43,4 +43,7 @@ _______________________________________________________
 #ZADANIE 5
 
 INSERT INTO postac VALUES(0,'Alf','wiking','1947-05-12',55);
-SELECT * FROM postac;
+INSERT INTO postac VALUES(0,'Gulf','wiking','2020-07-28',3);
+INSERT INTO postac VALUES(0,'Hulf','wiking','1702-04-22',90);
+INSERT INTO postac VALUES(0,'Gumilf ','wiking','1802-11-02',39);
+INSERT INTO postac VALUES(0,'Bazyli ','wiking','1202-01-02',20);
