@@ -55,4 +55,14 @@ CREATE TABLE statek(nazwa_statku VARCHAR(20) PRIMARY KEY, rodzaj_statku ENUM('Du
 INSEERT INTO statek (nazwa_statku,rodzaj_statku,data_wodowania,max_ladownosc) VALUES ('Bak','Sredni','1989',5000)
 INSERT INTO statek (nazwa_statku,rodzaj_statku,data_wodowania,max_ladownosc) VALUES ('Trzczmiel','Duzy','1902',9000)
 
-ALTER TABLE postac ADD COLUMN funkcje VARCHAR(20);    UPDATE postac SET funkcja ='La[otam WHERE nazwa ='Bjorn' AND id_postaci = 1;
+ALTER TABLE postac ADD COLUMN funkcje VARCHAR(20);    UPDATE postac SET funkcja ='Kapitan' WHERE nazwa ='Bjorn' AND id_postaci = 1;
+
+ALTER TABLE postac ADD COLUMN nazwaS VARCHAR(20);     ALTER TABLE postac ADD FOREIGN KEY (nazwaS) REFERENCES statek (nazwa_statku);
+
+UPDATE postac SET nazwaS = 'Bak' WHERE nazwa LIKE('BJORN');    UPDATE postac SET nazwaS ='Trzczmiel' WHERE nazwa  LIKE ('Drozd');
+
+
+
+
+
+
