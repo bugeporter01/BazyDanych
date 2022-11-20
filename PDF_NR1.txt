@@ -61,6 +61,9 @@ ALTER TABLE postac ADD COLUMN nazwaS VARCHAR(20);     ALTER TABLE postac ADD FOR
 
 UPDATE postac SET nazwaS = 'Bak' WHERE nazwa LIKE('BJORN');    UPDATE postac SET nazwaS ='Trzczmiel' WHERE nazwa  LIKE ('Drozd');
 
+DELETE FROM izba WHERE nazwa_izby = 'Spizarnia';
+
+DROP TABLE izba;
 
 
 
